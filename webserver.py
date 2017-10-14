@@ -4,7 +4,7 @@ webserver.py
 File that is the central location of code for your webserver.
 """
 
-from flask import Flask, request, render_template
+from flask import Flask, requests, render_template
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,11 +14,22 @@ def index():
 
 @app.route('/about')
 def about():
+
     return render_template('AboutUs.html')
 
-@app.route('/contact')
+@app.route('/contact',  methods = ['POST'])
 def contact():
     return render_template('ContactUs.html')
+
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org/messages",
+        auth=("api", "key-7e17ccf7a06dae27efb47c9024414ae2"),
+        data={"from": "Mailgun Sandbox <postmaster@sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org>",
+              "to": "Camille Harris <camilleharris@berkeley.edu>",
+              "subject": request.form['subject'] ,
+              "text": request.form['message']})
+
 
 @app.route('/blog/8-experiments-in-motivation')
 def motivation():
@@ -30,7 +41,7 @@ def focus():
 
 @app.route('/blog/how-to-develop-an-awesome-sense-of-direction')
 def direction():
-    return render_template('HowToDevelopAnAwesomeSenseOfDirection')
+    return render_template('HowToDevelopAnAwesomeSenseOfDirection.html')
 
 @app.route('/blog/training-to-be-a-good-writer')
 def writer():
@@ -38,4 +49,4 @@ def writer():
 
 @app.route('/blog/what-productivity-systems-wont-solve')
 def productivity():
-    return render_template('WhatProductivitySystemsWontSolve')
+    return render_template('WhatProductivitySystemsWontSolve.html')
