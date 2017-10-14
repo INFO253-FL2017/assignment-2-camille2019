@@ -8,7 +8,7 @@ from flask import Flask, render_template
 
 # Create application, and point static path (where static resources like images, css, and js files are stored) to the
 # "static folder"
-app = Flask(__name__,static_url_path="/static")
+app = Flask(__name__)
 
 @app.route('/index')
 def index():
