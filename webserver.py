@@ -25,7 +25,7 @@ def contact():
 @app.route('/blog/8-experiments-in-motivation')
 def motivation():
     return render_template('8 Experiments in Motivation.html')
-
+s
 @app.route('/blog/a-mindful-shift-of-focus')
 def focus():
     return render_template('A Mindful Shift of Focus.html')
