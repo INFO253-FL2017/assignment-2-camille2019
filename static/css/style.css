@@ -1,8 +1,11 @@
 h1 {
-    color: #B3D4FC;
+    color: #1da548;
     text-align: center;
 }
 
+body {
+	background-color: #ffb7f6
+}
 strong {
   font-weight: bold;
   color: 	#9400D3;
@@ -10,7 +13,7 @@ strong {
   }
 
   h2{
-    color: #FF1493;
+    color: #000000;
     text-align: left;
 
   }
