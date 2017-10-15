@@ -20,3 +20,26 @@ contactUs.addEventListener("submit", function(event) {
 	to another server */
 	event.preventDefault();
 })
+// def myFunction(){
+//   var name = contactUS.getElementById("name").value;
+//   var subject = contactUS.getElementById("subject").value;
+//   var message = contactUS.getElementById("message").value;
+//   var errorString = "Missing required feild(s):";
+//   var errorCount = 0;
+//   if (name == null){
+//     errorCount+=1;
+//     errorString += " name";
+//   } if (subject == null){
+//     errorCount+=1;
+//     errorString += " subject";
+//   } if (message == null){
+//     errorCount+=1;
+//     errorString += " message";
+//   }
+//   if (errorCount > 0){
+//
+//   }
+//
+//
+//   }
+// }
