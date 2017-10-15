@@ -3,10 +3,11 @@ webserver.py
 
 File that is the central location of code for your webserver.
 """
+import requests
+import os
 
 from flask import Flask, request, render_template
-import os
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 @app.route('/')
 def index():
@@ -34,13 +35,14 @@ def contact():
     #                "text": "message"})
     # else:
     #     return render_template('ContactUs.html')
-    message = request.form.get("message")
-    notifications = []
 
+    notifications = []
+    message = request.form.get("message")
+    subject = request.form.get("subject")
     data = {
         'from': os.environ["INFO253_MAILGUN_FROM_EMAIL"],
         'to': os.environ["INFO253_MAILGUN_TO_EMAIL"],
-        'subject': "You just was sent a message",
+        'subject': subject,
         'text': message,
     }
     auth = (os.environ["INFO253_MAILGUN_USER"], os.environ["INFO253_MAILGUN_PASSWORD"])
