@@ -43,7 +43,7 @@ def contact():
         data = {
             'from': os.environ["INFO253_MAILGUN_FROM_EMAIL"],
             'to': os.environ["INFO253_MAILGUN_TO_EMAIL"],
-            'subject': "New Message from: " + email + " " subject,
+            'subject': 'New Message from: ' + email + ' ' + subject,
             'text': message,
             }
         )
