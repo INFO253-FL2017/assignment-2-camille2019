@@ -25,8 +25,8 @@ def contact():
             auth=("api", "key-7e17ccf7a06dae27efb47c9024414ae2"),
             data={"from": "Mailgun Sandbox <postmaster@sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org>",
                   "to": "Camille Harris <camilleharris@berkeley.edu>",
-                  "subject": request.form['subject'] ,
-                  "text": request.form['message']})
+                  "subject": "subject",
+                  "text": "message"})
     else:
         return render_template('ContactUs.html')
 
