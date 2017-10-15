@@ -9,6 +9,7 @@ contactUs.addEventListener("submit", function(event) {
 	var subject = contactUs.elements.namedItem("subject").value;
   var message = contactUs.elements.namedItem("message").value;
 
+
 	localStorage.curLocation = name + ": " + subject + ":" + message;
 
 	var m = document.getElementById("div");

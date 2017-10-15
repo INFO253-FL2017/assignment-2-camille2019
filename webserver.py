@@ -50,7 +50,7 @@ def contact():
         auth=auth,
         data=data)
 
-	if r.status_code == requests.codes.ok:
+    if r.status_code == requests.codes.ok:
         notifications.append("Your email was sent")
     else:
         notifications.append("You email was not sent. Please try again later")
