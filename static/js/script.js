@@ -20,6 +20,15 @@ contactUs.addEventListener("submit", function(event) {
 	to another server */
 	event.preventDefault();
 })
+// $.ajax({url: "http://api.openweathermap.org/data/2.5/weather?lat={37.8716}&lon={122.2727}",
+// 				type: "GET",
+// 				dataType: "jsnop",
+//
+//
+//
+//
+
+
 // def myFunction(){
 //   var name = contactUS.getElementById("name").value;
 //   var subject = contactUS.getElementById("subject").value;
