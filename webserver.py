@@ -36,13 +36,14 @@ def contact():
     notifications = []
     message = request.form.get("message")
     subject = request.form.get("subject")
+    email = request.form.get("email")
     r = requests.post(
         'https://api.mailgun.net/v3/sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org/messages'.format(os.environ["INFO253_MAILGUN_DOMAIN"]),
         auth = (os.environ["INFO253_MAILGUN_USER"], os.environ["INFO253_MAILGUN_PASSWORD"]),
         data = {
             'from': os.environ["INFO253_MAILGUN_FROM_EMAIL"],
             'to': os.environ["INFO253_MAILGUN_TO_EMAIL"],
-            'subject': subject,
+            'subject': "New Message from: " + email + " " subject,
             'text': message,
             }
         )
