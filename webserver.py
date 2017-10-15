@@ -17,7 +17,7 @@ def about():
 
     return render_template('AboutUs.html')
 
-@app.route('/contact',  methods = ['POST'])
+@app.route('/contact', methods = ['POST'])
 def contact():
     # if request.method == 'POST':
     #     return requests.post(
