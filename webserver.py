@@ -19,16 +19,16 @@ def about():
 
 @app.route('/contact')
 def contact():
-    # if request.method == 'POST':
-    #     return requests.post(
-    #         "https://api.mailgun.net/v3/sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org/messages",
-    #         auth=("api", "key-7e17ccf7a06dae27efb47c9024414ae2"),
-    #         data={"from": "Mailgun Sandbox <postmaster@sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org>",
-    #               "to": "Camille Harris <camilleharris@berkeley.edu>",
-    #               "subject": "subject",
-    #               "text": "message"})
-    #else:
-    return render_template('ContactUs.html')
+    if request.method == 'POST':
+         return requests.post(
+             "https://api.mailgun.net/v3/sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org/messages",
+             auth=("api", "key-7e17ccf7a06dae27efb47c9024414ae2"),
+             data={"from": "Mailgun Sandbox <postmaster@sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org>",
+                   "to": "Camille Harris <camilleharris@berkeley.edu>",
+                   "subject": "subject",
+                   "text": "message"})
+    else:
+        return render_template('ContactUs.html')
 
 
 @app.route('/blog/8-experiments-in-motivation')
