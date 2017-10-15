@@ -13,10 +13,8 @@ app = Flask(__name__, static_url_path="/static")
 def index():
     return render_template('index.html') # Render the template located in "templates/index.html"
 
-
 @app.route('/about')
 def about():
-
     return render_template('AboutUs.html')
 
 @app.route('/contact', methods=['GET'])
@@ -35,28 +33,23 @@ def contact():
     #                "text": "message"})
     # else:
     #     return render_template('ContactUs.html')
-
     notifications = []
     message = request.form.get("message")
     subject = request.form.get("subject")
-    data = {
-        'from': os.environ["INFO253_MAILGUN_FROM_EMAIL"],
-        'to': os.environ["INFO253_MAILGUN_TO_EMAIL"],
-        'subject': subject,
-        'text': message,
-    }
-    auth = (os.environ["INFO253_MAILGUN_USER"], os.environ["INFO253_MAILGUN_PASSWORD"])
-
     r = requests.post(
         'https://api.mailgun.net/v3/sandboxcf68071789ba4d2ab3c5d8a60b43c954.mailgun.org/messages'.format(os.environ["INFO253_MAILGUN_DOMAIN"]),
-        auth=auth,
-        data=data)
-
+        auth = (os.environ["INFO253_MAILGUN_USER"], os.environ["INFO253_MAILGUN_PASSWORD"]),
+        data = {
+            'from': os.environ["INFO253_MAILGUN_FROM_EMAIL"],
+            'to': os.environ["INFO253_MAILGUN_TO_EMAIL"],
+            'subject': subject,
+            'text': message,
+            }
+        )
     if r.status_code == requests.codes.ok:
         notifications.append("Your email was sent")
     else:
         notifications.append("You email was not sent. Please try again later")
-
     return render_template("ContactUs.html", notifications=notifications)
 
 @app.route('/blog/8-experiments-in-motivation')
