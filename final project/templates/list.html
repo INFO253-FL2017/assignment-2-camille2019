@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+  		<meta charset="UTF-8">
+		<title>Movie and TV Show random generator</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Other Style Sheets -->
+		<link rel="stylesheet" type="text/css" href="../static/css/stylesheet.css">
+    	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	</head>
+
+	<body style="background-color: black">
+
+		<div>
+			<h1>Here is a list of movies we found for you:</h1>
+		</div>
+
+		<div class="container">
+
+			<div class="row">
+
+				{% if type == "movie" %}
+				
+					{% for movie in list %}
+
+						<div class="col-sm-4 listing">
+
+								<a movie-id="{{ movie.id }}" href="/selection" onclick="addMovieID(this); this.onclick=null;">
+
+									<img src="{{image_url}}{{movie.poster_path}}" height="100" width="100"> 
+
+									<h2>{{movie.title}}</h2> 
+									
+									<p>{{movie.release_date}}</p> 
+									
+									<p>{{movie.overview}}</p>
+								
+								</a>
+
+						</div>
+
+					{% endfor %}
+				
+				{% else %}
+				
+					{% for tvshow in list %}
+
+						<div class="col-sm-4">
+
+								<a movie-id="{{ tvshow.id }}" href="/selection" onclick="addMovieID(this); this.onclick=null;">
+									
+									<img src="{{image_url}}{{tvshow.poster_path}}" height="100" width="100"> 
+
+									<h2>{{tvshow.name}}</h2> 
+
+									<p>{{tvshow.first_air_date}}</p> 
+									
+									<p>{{tvshow.overview}}</p>
+								
+								</a>
+
+						</div>
+				
+					{% endfor %}
+		
+				{% endif %}	
+
+			</div>
+
+
+			<div>
+				<footer style="text-align:center">
+					<p>
+						<a href="/" style="text-decoration:none">Home</a> |
+						<a href="/about" style="text-decoration:none">About</a>
+					</p>
+				</footer>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="../static/js/script.js"></script>
+
+	</body>
+
+</html>

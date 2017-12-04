@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+  		<meta charset="UTF-8">
+		<title>Movie and TV Show random generator</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- Other Style Sheets -->
+		<link rel="stylesheet" type="text/css" href="../static/css/stylesheet.css">
+    	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	</head>
+
+	<body style="background-color: black">
+
+		<div>
+			<h1 style="color: white">Your selection:</h1>
+		</div>
+
+		<div>
+			<div class="center" style="text-align: center; color: white">
+
+				<img src="{{image_url}}{{selection.poster_path}}" height="100" width="100">
+
+				{% if type == "movie" %}
+					
+					<p>{{selection.title}} <br> {{selection.release_date}} <br> {{selection.overview }}</p>
+
+				{% else %}
+                
+                    <p>{{selection.name}}<br> {{selection.first_air_date}}<br> {{selection.overview}}</p>
+
+				{% endif %}	
+
+				{% if selection.videos.results[0] is defined %}
+
+				<iframe width="420" height="315" src="{{youtube_url}}{{selection.videos.results[0].key}}"></iframe>
+
+				{% endif %}
+
+			</div>
+
+
+			<div>
+				<footer style="text-align:center; color: white">
+					<p>
+						<a href="/" style="text-decoration:none">Home</a> |
+						<a href="/about" style="text-decoration:none">About</a>
+					</p>
+				</footer>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="../static/js/script.js"></script>
+
+	</body>
+
+</html>
